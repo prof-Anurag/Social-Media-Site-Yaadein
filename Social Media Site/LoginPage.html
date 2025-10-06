@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yaadein - Welcome</title>
+    <!-- Using Tailwind CSS v2 for compatibility with original classes -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+      /* --- Custom Animations and Styles --- */
+
+      /* Keyframes for the animated gradient background */
+      @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Class to apply the animated gradient */
+      .animated-gradient-bg {
+        /* A soft, beautiful gradient */
+        background: linear-gradient(-45deg, #fecdd3, #fbcfe8, #bfdbfe, #a7f3d0);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+
+      /* Keyframes for the form fade-in effect */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+
+      /* Keyframes for the floating blobs effect */
+      @keyframes float {
+        0%, 100% { transform: translateY(0) translateX(0); }
+        50% { transform: translateY(-25px) translateX(15px); }
+      }
+      .animate-float {
+        animation: float 8s ease-in-out infinite;
+      }
+
+      /* Keyframes for the gentle pulsing effect */
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 0.4; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.05); }
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 10s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-center justify-center p-4 animated-gradient-bg relative overflow-hidden">
+    
+    <!-- Animated Background Blobs -->
+    <div class="absolute inset-0 overflow-hidden z-0">
+      <div class="absolute w-80 h-80 bg-purple-400 opacity-50 rounded-full blur-3xl -top-10 -left-10 animate-float"></div>
+      <div class="absolute w-96 h-96 bg-pink-400 opacity-50 rounded-full blur-3xl -bottom-20 -right-10 animate-pulse-slow"></div>
+      <div class="absolute w-72 h-72 bg-blue-300 opacity-50 rounded-full blur-3xl top-1/3 left-1/4 animate-float" style="animation-delay: 2s; animation-duration: 12s;"></div>
+      <div class="absolute w-64 h-64 bg-green-300 opacity-40 rounded-full blur-3xl bottom-1/4 right-1/3 animate-pulse-slow" style="animation-delay: 4s; animation-duration: 14s;"></div>
+    </div>
+
+    <!-- Main Content Card with Glassmorphism Effect -->
+    <div class="relative z-10 flex flex-col md:flex-row bg-white bg-opacity-70 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden w-full max-w-5xl transform transition duration-500 hover:scale-[1.01]">
+      
+      <!-- Container for the forms -->
+      <div class="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+
+        <!-- Login Form (Visible by default) -->
+        <div id="login-section" class="animate-fadeIn">
+          <h1 class="text-2xl font-bold text-pink-600 mb-2 tracking-tight">Yaadein</h1>
+          <h2 class="text-3xl font-extrabold text-gray-900 mb-3">Welcome Back</h2>
+          <p class="text-gray-500 mb-6">Please log in to rediscover your memories.</p>
+
+          <form class="space-y-4">
+            <div class="group">
+              <label class="block text-sm font-medium text-gray-700">Username or Email</label>
+              <input type="text" placeholder="Enter your username or email" class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 bg-white/50" />
+            </div>
+
+            <div class="group relative">
+              <label class="block text-sm font-medium text-gray-700">Password</label>
+              <input type="password" placeholder="********" class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 bg-white/50" />
+              <i class="fas fa-lock absolute right-4 top-9 text-gray-400"></i>
+            </div>
+
+            <div class="flex items-center justify-between text-sm">
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded" />
+                <span class="text-gray-600">Remember me</span>
+              </label>
+              <a href="#" class="text-pink-600 font-semibold hover:underline">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white font-bold py-3 px-4 rounded-lg mt-4 hover:opacity-90 transform hover:-translate-y-0.5 transition duration-300 shadow-lg">
+              Log In
+            </button>
+          </form>
+
+          <div class="text-center mt-6 text-sm text-gray-600">
+            Don’t have an account? <a href="#" onclick="switchToSignup()" class="text-pink-600 font-semibold hover:underline cursor-pointer">Sign up</a>
+          </div>
+        </div>
+
+        <!-- Signup Form (Hidden by default) -->
+        <div id="signup-section" class="animate-fadeIn hidden">
+            <h1 class="text-2xl font-bold text-pink-600 mb-2 tracking-tight">Yaadein</h1>
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-3">Create an account</h2>
+            <p class="text-gray-600 mb-4">To get started, please fill out your details.</p>
+
+            <form class="space-y-3">
+              <div class="group">
+                <label class="block text-sm font-medium text-gray-700">Full name *</label>
+                <input type="text" placeholder="Name Surname" class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 group-hover:shadow-md bg-white/50" />
+              </div>
+
+              <div class="group">
+                <label class="block text-sm font-medium text-gray-700">Username *</label>
+                <input type="text" placeholder="best_wizard421" class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 group-hover:shadow-md bg-white/50" />
+              </div>
+
+              <div class="group">
+                <label class="block text-sm font-medium text-gray-700">E-mail *</label>
+                <input type="email" placeholder="email@email.com" class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 group-hover:shadow-md bg-white/50" />
+              </div>
+
+              <div class="group relative">
+                <label class="block text-sm font-medium text-gray-700">Password *</label>
+                <input type="password" placeholder="************" class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 group-hover:shadow-md bg-white/50" />
+                <i class="fas fa-key absolute right-4 top-9 text-gray-400"></i>
+              </div>
+
+              <div class="group relative">
+                <label class="block text-sm font-medium text-gray-700">Repeat password *</label>
+                <input type="password" placeholder="************" class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500 transition duration-200 group-hover:shadow-md bg-white/50" />
+                <i class="fas fa-lock absolute right-4 top-9 text-gray-400"></i>
+              </div>
+
+              <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                By clicking Continue, you agree to our <a href="#" class="font-semibold text-pink-600">Terms</a> and <a href="#" class="font-semibold text-pink-600">Privacy Policy</a>.
+              </p>
+
+              <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white font-bold py-3 px-4 rounded-lg mt-4 hover:opacity-90 transform hover:-translate-y-0.5 transition duration-300 shadow-lg">
+                Sign up
+              </button>
+            </form>
+
+            <div class="text-center mt-4 text-sm text-gray-600">
+              Already have an account? <a href="#" onclick="switchToLogin()" class="text-pink-600 font-semibold hover:underline cursor-pointer">Log in</a>
+            </div>
+        </div>
+
+      </div>
+
+      <!-- Right Section - Image -->
+      <div class="hidden md:block w-full md:w-1/2 relative">
+        <img
+          src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80"
+          alt="A woman posing for a photo"
+          class="object-cover w-full h-full"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+    </div>
+
+    <script>
+        // --- JavaScript for switching between Login and Signup forms ---
+        
+        const loginSection = document.getElementById('login-section');
+        const signupSection = document.getElementById('signup-section');
+
+        function switchToSignup() {
+            // Add 'hidden' to login form, remove from signup form
+            loginSection.classList.add('hidden');
+            signupSection.classList.remove('hidden');
+        }
+
+        function switchToLogin() {
+            // Add 'hidden' to signup form, remove from login form
+            signupSection.classList.add('hidden');
+            loginSection.classList.remove('hidden');
+        }
+    </script>
+  </body>
+</html>
